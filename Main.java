@@ -27,6 +27,11 @@ public class Main {
                     System.out.print("Enter the ending position of the selection: ");
                     int fin = scanner.nextInt();
                     scanner.nextLine(); // Consuma il carattere di nuova riga
+                    if(debut > fin) {
+                        System.out.print("Start is greather than end! ");
+                        scanner.nextLine(); 
+                        break;
+                    }
                     ihm.gererSelection(debut, fin);
                     System.out.println("Selected text: " + buffer.copier());
                     break;
@@ -46,13 +51,20 @@ public class Main {
 
                 case "paste":
                     Command pasteCommand = new PasteCommand(ihm);
-                    System.out.print("Where do you want to paste the text? (Position): ");
-                    int pos = scanner.nextInt();
-                    scanner.nextLine(); // Consuma il carattere di nuova riga
-                    ihm.gererSelection(pos, pos);
-                    pasteCommand.execute();
-                    buffer.afficher();
-                    break;
+                    if(clipboard.obtenirContenu() != "")
+                    {
+                        System.out.print("Where do you want to paste the text? (Position): ");
+                        int pos = scanner.nextInt();
+                        scanner.nextLine(); // Consuma il carattere di nuova riga
+                        ihm.gererSelection(pos, pos);
+                        pasteCommand.execute();
+                        buffer.afficher();
+                        break;
+                    }else
+                    {
+                        System.out.print("Clipboard is empty! ");
+                        break;
+                    }
 
                 case "add":
                     System.out.print("Enter the text to add: ");
