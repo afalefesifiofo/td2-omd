@@ -1,3 +1,4 @@
+package version1;
 public class CopyCommand implements Command {
     private IHM ihm;
 

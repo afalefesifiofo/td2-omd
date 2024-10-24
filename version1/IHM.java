@@ -1,3 +1,4 @@
+package version1;
 
 public class IHM {
     private Buffer buffer;

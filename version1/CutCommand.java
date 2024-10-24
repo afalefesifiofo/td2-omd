@@ -1,3 +1,4 @@
+package version1;
 public class CutCommand implements Command {
     private IHM ihm;
 

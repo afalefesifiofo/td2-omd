@@ -1,3 +1,4 @@
+package version2;
 
 public class Clipboard {
     private String contenu ="";
