@@ -9,7 +9,7 @@ public class CommandHistory {
     public void executeCommand(Command cmd) {
         cmd.execute();
         undoStack.push(cmd);
-        redoStack.clear(); // Quando si esegue un nuovo comando, la pila di redo viene resettata
+        redoStack.clear();
     }
 
     public void undo() {

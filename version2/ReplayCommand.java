@@ -3,7 +3,7 @@ package version2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReplayCommand {
+public class ReplayCommand implements Command {
     private List<Command> commandList = new ArrayList<>();
 
     public void record(Command cmd) {
@@ -14,5 +14,15 @@ public class ReplayCommand {
         for (Command cmd : commandList) {
             cmd.execute();
         }
+    }
+
+    @Override
+    public void execute() {
+        replay();
+    }
+
+    @Override
+    public void undo() {
+        // Nessuna operazione per annullare il replay
     }
 }

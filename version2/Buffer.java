@@ -1,9 +1,17 @@
 package version2;
 
 public class Buffer {
-    private String text ="";
+    private String text = "";
     private int selection_debut;
     private int selection_fin;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String newText) {
+        text = newText;
+    }
 
     public void selectionner(int debut, int fin) {
         this.selection_debut = debut;
@@ -33,9 +41,5 @@ public class Buffer {
 
     public void afficher() {
         System.out.println(text);
-    }
-
-    public String getCilpboard() {
-        return copier();
     }
 }

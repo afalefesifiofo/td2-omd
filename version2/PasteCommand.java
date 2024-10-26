@@ -3,7 +3,7 @@ package version2;
 public class PasteCommand implements Command {
     private Buffer buffer;
     private Clipboard clipboard;
-    private String previousText;
+    private String pastedText;
 
     public PasteCommand(Buffer buffer, Clipboard clipboard) {
         this.buffer = buffer;
@@ -12,12 +12,13 @@ public class PasteCommand implements Command {
 
     @Override
     public void execute() {
-        previousText = clipboard.obtenirContenu();
-        buffer.coller(previousText);
+        pastedText = clipboard.obtenirContenu();
+        buffer.coller(pastedText);
     }
 
     @Override
     public void undo() {
-        buffer.couper(); // Annulla incollando ciò che era stato incollato
+        // Rimuove il testo incollato
+        buffer.couper();
     }
 }

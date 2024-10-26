@@ -1,4 +1,5 @@
 package version2;
+
 public class CopyCommand implements Command {
     private Buffer buffer;
     private Clipboard clipboard;
@@ -15,6 +16,6 @@ public class CopyCommand implements Command {
 
     @Override
     public void undo() {
-        // La copia non cambia lo stato del buffer, nessuna azione da annullare
+        // Nessuna operazione per annullare la copia
     }
 }

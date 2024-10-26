@@ -1,10 +1,10 @@
 package version2;
 
 public class Clipboard {
-    private String contenu ="";
+    private String contenu = "";
 
     public void copier(String texte) {
-        this.contenu = texte;
+        contenu = texte;
     }
 
     public String obtenirContenu() {
