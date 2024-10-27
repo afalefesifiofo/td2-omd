@@ -49,7 +49,6 @@ public class Main {
                 case "paste":
                     Command pasteCommand = new PasteCommand(buffer, clipboard);
                     commandHistory.executeCommand(pasteCommand);
-                    System.out.println("Text pasted.");
                     if(recording) {
                         replay.record(pasteCommand);
                     }

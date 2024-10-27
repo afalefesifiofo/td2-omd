@@ -32,7 +32,13 @@ public class Buffer {
     }
 
     public void coller(String texte) {
+        if (selection_debut >= 0 && selection_fin <= text.length()) {
         text = text.substring(0, selection_debut) + texte + text.substring(selection_debut);
+        System.out.println("Text pasted!\n");
+        }
+        else{
+            System.out.printf("Ouside buffer! No paste performed. Max: %d\n", text.length());
+        }
     }
 
     public void ajouterTexte(String texte) {
