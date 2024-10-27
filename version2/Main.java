@@ -10,7 +10,7 @@ public class Main {
         Clipboard clipboard = new Clipboard();
         CommandHistory commandHistory = new CommandHistory();
         IHM ihm = new IHM(buffer, clipboard, commandHistory);
-
+        boolean recording= false;
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -18,9 +18,10 @@ public class Main {
         String initialText = scanner.nextLine();
         buffer.ajouterTexte(initialText);
         buffer.afficher();
+        ReplayCommand replay = new ReplayCommand();
         // Ciclo principale per gestire i comandi dell'utente
         while (!exit) {
-            System.out.println("Enter a command: (select, copy, cut, paste, add, undo, redo, exit)");
+            System.out.println("Enter a command: (select, copy, cut, paste, add, undo, redo, record, replay, exit)");
             String command = scanner.nextLine();
 
             switch (command) {
@@ -46,11 +47,12 @@ public class Main {
                     break;
 
                 case "paste":
-
-                    
                     Command pasteCommand = new PasteCommand(buffer, clipboard);
                     commandHistory.executeCommand(pasteCommand);
                     System.out.println("Text pasted.");
+                    if(recording) {
+                        replay.record(pasteCommand);
+                    }
                     break;
 
                 case "add":
@@ -75,6 +77,16 @@ public class Main {
                     System.out.println("Exiting program.");
                     break;
 
+                case "record":
+                    recording = true;
+                    System.out.println("Next paste commands will be recorded, until replay");
+                    break;
+
+                case "replay":
+                    replay.replay();
+                    recording = false;
+                    break;
+
                 default:
                     System.out.println("Invalid command. Please try again.");
                     break;
@@ -84,6 +96,7 @@ public class Main {
             System.out.println("Current buffer text: ");
             buffer.afficher();
             System.out.println();
+            
         }
 
         scanner.close();
