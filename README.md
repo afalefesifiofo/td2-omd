@@ -40,7 +40,7 @@ The first version focused on implementing fundamental editing functionalities:
 - **Copy and Cut Commands**: The user can copy or cut the selected text to the clipboard. Cutting also removes the selected text from the buffer.
 - **Paste Command**: The content in the clipboard can be pasted into the buffer, replacing the current selection.
 
-In this version, the **Command Pattern** was implemented to manage editing commands like copy, cut, paste, and add. Each command (e.g., `CopyCommand`, `CutCommand`, `PasteCommand`) extends the `Command` interface with `execute()` and `undo()` methods, allowing seamless management of each action.
+In this version, the **Command Pattern** was implemented to manage editing commands like copy, cut, paste, and add. Each command (e.g., `CopyCommand`, `CutCommand`, `PasteCommand`) extends the `Command` interface with `execute()` method, allowing seamless management of each action.
 
 ### Version 2: Recording, Replay, and Undo/Redo Functionality
 
